@@ -12,7 +12,7 @@
 	<artifactId>springboot-service-eureka-server</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
 	<name>springboot-service-eureka-server</name>
-	<description>Proyecto para desarrollo backend, microservicios</description>
+	<description>Demo project for Spring Boot</description>
 	<properties>
 		<java.version>11</java.version>
 		<spring-cloud.version>2021.0.8</spring-cloud.version>
