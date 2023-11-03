@@ -9,6 +9,7 @@ import org.springframework.cloud.openfeign.EnableFeignClients;
 @SpringBootApplication
 @EnableEurekaClient
 @EnableFeignClients
+
 @EnableCircuitBreaker
 public class SpringbootServiceStoreApplication {
 
