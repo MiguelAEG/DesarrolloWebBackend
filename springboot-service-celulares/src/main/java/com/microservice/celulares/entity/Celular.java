@@ -13,7 +13,6 @@ import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 import javax.persistence.Transient;
 
-
 @Entity
 @Table(name = "celulares")
 public class Celular implements Serializable {
@@ -22,13 +21,13 @@ public class Celular implements Serializable {
 	 * 
 	 */
 	private static final long serialVersionUID = 9213131271453956161L;
-
+	
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
-
+	
 	private String name;
-
+	
 	private String marca;
 	
 	@Column(name = "created_at")
@@ -37,12 +36,6 @@ public class Celular implements Serializable {
 	
 	@Transient
 	private Integer port;
-	
-	public Celular(Long id, String name, String marca) {
-		this.id=id;
-		this.name=name;
-		this.marca=marca;	
-	}
 
 	public Long getId() {
 		return id;
@@ -59,15 +52,6 @@ public class Celular implements Serializable {
 	public void setName(String name) {
 		this.name = name;
 	}
-	
-	public Integer getPort() {
-		return port;
-	}
-
-	public void setPort(Integer port) {
-		this.port = port;
-	}
-
 
 	public String getMarca() {
 		return marca;
@@ -83,5 +67,13 @@ public class Celular implements Serializable {
 
 	public void setCreatedAt(Date createdAt) {
 		this.createdAt = createdAt;
+	}
+
+	public Integer getPort() {
+		return port;
+	}
+
+	public void setPort(Integer port) {
+		this.port = port;
 	}
 }

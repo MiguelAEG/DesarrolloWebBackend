@@ -14,7 +14,7 @@ import com.netflix.zuul.exception.ZuulException;
 public class TimePreFilter extends ZuulFilter {
 
 	private static Logger log = LoggerFactory.getLogger(TimePreFilter.class);
-
+	
 	@Override
 	public boolean shouldFilter() {
 		return true;
@@ -24,12 +24,12 @@ public class TimePreFilter extends ZuulFilter {
 	public Object run() throws ZuulException {
 		RequestContext ctx = RequestContext.getCurrentContext();
 		HttpServletRequest request = ctx.getRequest();
-
+		
 		log.info(String.format("%s request enrutado a %s", request.getMethod(), request.getRequestURL().toString()));
-
+		
 		Long tiempoInicio = System.currentTimeMillis();
 		request.setAttribute("tiempoInicio", tiempoInicio);
-
+		
 		return null;
 	}
 

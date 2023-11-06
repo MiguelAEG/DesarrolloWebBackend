@@ -15,17 +15,17 @@ import com.netflix.hystrix.contrib.javanica.annotation.HystrixCommand;
 
 @RestController
 public class StoreController {
-
+	
 	@Autowired
 	//@Qualifier("serviceRest")
 	private StoreService storeService;
-
+	
 	@GetMapping("/list")
 	public List<Store> list() {
 		return storeService.findAll();
 	}
-
-	//@HystrixCommand(fallbackMethod="metodoGenerico")
+	
+	@HystrixCommand(fallbackMethod="metodoGenerico")
 	@GetMapping("/celular/{id}/cantidad/{cantidad}")
 	public Store details(@PathVariable Long id, @PathVariable Integer cantidad) {
 		return storeService.findById(id, cantidad);
@@ -33,8 +33,9 @@ public class StoreController {
 	
 	public Store metodoGenerico(Long id, Integer cantidad) {
 		Store store = new Store();
-		Celular cel = new Celular(id, "Celular personal", "Samsung");
-		store.setCantidad(2);
+		Celular cel = new Celular(id, "El Cel del Profe", "Samsung");
+		
+		store.setCantidad(cantidad);
 		store.setCel(cel);
 		
 		return store;
