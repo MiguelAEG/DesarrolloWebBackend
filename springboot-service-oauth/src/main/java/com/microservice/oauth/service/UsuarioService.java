@@ -19,7 +19,7 @@ import com.microservice.common.users.entity.Usuario;
 import com.microservice.oauth.client.UsuarioFeignClient;
 
 @Service
-public class UsuarioService implements UserDetailsService{
+public class UsuarioService implements UserDetailsService, IUsuarioService{
 
 	private Logger log = LoggerFactory.getLogger(UsuarioService.class);
 	@Autowired
@@ -42,6 +42,11 @@ public class UsuarioService implements UserDetailsService{
 				.collect(Collectors.toList());
 		log.info("Usuario auytentificado: "+ username);
 		return new User(user.getUsername(), user.getPassword(), user.getEneable(), true, true, true, autorities);
+	}
+
+	@Override
+	public Usuario findByUsername(String username) {
+		return client.findByUsername(username);
 	}
 
 }
